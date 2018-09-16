@@ -4,8 +4,8 @@ This project deploys a web application for an item catalog onto a Linux server. 
 This project is an assignment for the [Udacity Full Stack Web Developer Nanodegree course](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004). 
 
 ## 1) Creating a New User
--On your local machine, generate an encryption key for user grader: ```ssh-keygen ~/.ssh```
--rename the file to grader.pem: ```mv grader grader.pem```
+*On your local machine, generate an encryption key for user grader: ```ssh-keygen ~/.ssh```
+*rename the file to grader.pem: ```mv grader grader.pem```
 -Copy contents of grader.pub: ```cat ~./ssh/grader.pub```
 -create the user: ```sudo adduser grader```
 -make a new file: ```sudo nano /etc/sudoers.d/grader```
