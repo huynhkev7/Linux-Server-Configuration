@@ -3,12 +3,12 @@ This project deploys a web application for an item catalog onto a Linux server. 
 
 This project is an assignment for the [Udacity Full Stack Web Developer Nanodegree course](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004). 
 
-## Server Information
+# Server Information
 - IP Address: 54.245.214.174
 - Server URL: http://ec2-54-245-214-174.us-west-2.compute.amazonaws.com
 - SSH port: 2200
 
-## Installed Software
+# Installed Software
 - apache2
 - flask
 - git
@@ -23,7 +23,7 @@ This project is an assignment for the [Udacity Full Stack Web Developer Nanodegr
 - Sqlalchemy
 - virtualenv
 
-## 1) Creating a New User
+# 1) Creating a New User
 - On your local machine, generate an encryption key for user grader: ```ssh-keygen ~/.ssh```
 - rename the file to grader.pem: ```mv grader grader.pem```
 - Copy contents of grader.pub: ```cat ~./ssh/grader.pub```
@@ -35,16 +35,16 @@ This project is an assignment for the [Udacity Full Stack Web Developer Nanodegr
 - give access from root to grader: ```chown grader:grader /home/grader/.ssh/```
 - Now, you should be able to access grader remotely with: ```ssh grader@54.245.214.174 -p 2200 -i ~/.ssh/grader.pem```
 
-## 2) Enable key-based authentication
+# 2) Enable key-based authentication
 - ```sudo nano /etc/ssh/sshd_config``` and change ```passwordAuthentication``` to "no"
 
-## 3) Disable root user remote login 
+# 3) Disable root user remote login 
 - ```sudo nano /etc/ssh/sshd_config``` and change ```permitRootLogin``` to "no"
 
-## 4) Update SSH port from 22 to 2200
+# 4) Update SSH port from 22 to 2200
 - ```sudo nano /etc/ssh/sshd_config``` and change ```Port``` to "2200"
 
-## 5) Configure firewall to allow connections for SSH port 2200, HTTP port 80, and NTP port 123
+# 5) Configure firewall to allow connections for SSH port 2200, HTTP port 80, and NTP port 123
 - ```sudo ufw default deny incoming```
 - ```sudo ufw default allow outgoing```
 - ```sudo ufw allow 2200/tcp```
@@ -56,11 +56,11 @@ This project is an assignment for the [Udacity Full Stack Web Developer Nanodegr
 ### Amazon Lightsail Network Configuration
 - Go to your Amazon Lightsail account on the browser
 - View Networking tab and make sure firewall settings have the following:
-HTTP TCP 80
-CUSTOM UDP 123
-CUSTOM TCP 2200
+	1. HTTP TCP 80
+	2. CUSTOM UDP 123
+	3. CUSTOM TCP 2200
 
-## 6) Database setup
+# 6) Database setup
 - Install PostgreSQL: ```sudo apt-get install postgresql```
 - Switch to user postgres: ```sudo su - postgres```
 - Connect to DB: ```psql```
@@ -84,7 +84,7 @@ CUSTOM TCP 2200
 - Edit file ```sudo nano setup_database.py``` and replace database connection to ```postgresql://catalog:catalog@localhost/catalog```
 - Edit file ```sudo nano populate_database.py``` and replace database connection to ```postgresql://catalog:catalog@localhost/catalog```
 - Edit file ```sudo nano __init__.py``` and update path for ```client_secrets.json``` to ```/var/www/catalog/catalog/client_secrets.json```
-# 8) Configuring virtual hosting
+# 8) Configuring Virtual Hosting
 - Install apache2: ```sudo apt-get install apache2```
 - Install wsgi: ```sudo apt-get install libapache2-mod-wsgi```
 - Enable wsgi: ```sudo a2enmod wsgi```
@@ -145,19 +145,19 @@ CUSTOM TCP 2200
 - Select Credentials
 - Select App Catalog under OAuth 2.0 client IDs
 - Add the following origins:
-```http://ec2-54-245-214-174.us-west-2.compute.amazonaws.com```
-```http://54.245.214.174```
+	1. ```http://ec2-54-245-214-174.us-west-2.compute.amazonaws.com```
+	2. ```http://54.245.214.174```
 - Add the following redirect URIs
-```http://ec2-54-245-214-174.us-west-2.compute.amazonaws.com/login```
-```http://ec2-54-245-214-174.us-west-2.compute.amazonaws.com/gconnect```
+	1. ```http://ec2-54-245-214-174.us-west-2.compute.amazonaws.com/login```
+	2. ```http://ec2-54-245-214-174.us-west-2.compute.amazonaws.com/gconnect```
 
 # 11) Restart Server and View Webpage
 - restart server: ```sudo service apache2 restart```
 - visit http://ec2-54-245-214-174.us-west-2.compute.amazonaws.com to see the web app in action!
 
-## 3rd Part Resources
+# 3rd Party Resources
 - https://aws.amazon.com/lightsail/
 - https://github.com/iliketomatoes/linux_server_configuration
 
-## Authors
+# Authors
 Created by Kevin Huynh
